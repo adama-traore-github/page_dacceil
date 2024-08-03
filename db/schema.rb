@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_01_203527) do
+ActiveRecord::Schema.define(version: 2024_08_02_200732) do
 
   create_table "attendances", force: :cascade do |t|
     t.string "stripe_customer_id"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2024_08_01_203527) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.integer "failed_attempts"
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   end
 

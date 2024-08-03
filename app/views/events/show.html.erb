@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Événement Détails</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container mt-5">
+    <p><strong>Titre :</strong> <%= @event.title %></p>
+    <p><strong>Description :</strong> <%= @event.description %></p>
+    <p><strong>Nombre d'inscrits :</strong> <%= @event.attendances.count %></p>
+    <p><strong>Créateur :</strong> <%= @event.user.email %></p>
+    <p><strong>Date de début :</strong> <%= @event.start_date.strftime('%d/%m/%Y %H:%M') %></p>
+    <p><strong>Date de fin :</strong> <%= @event.end_date.strftime('%d/%m/%Y %H:%M') %></p>
+    <p><strong>Lieu :</strong> <%= @event.location %></p>
+    <p><strong>Prix :</strong> <%= @event.price %> €</p>
+    
+    
+<a href="<%= edit_event_path(@event) %>" class="btn btn-primary">Modifier l'événement</a>
+<%= link_to 'Retour', profile_path, class: 'btn btn-secondary' %>
+
+    </div>
+  </body>
+</html>

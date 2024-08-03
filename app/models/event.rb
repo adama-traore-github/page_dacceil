@@ -12,6 +12,10 @@ class Event < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 1000 }
   validates :location, presence: true
 
+  def end_date
+    start_date + duration.minutes if start_date && duration
+  end
+
   private
 
   def start_date_cannot_be_in_the_past
